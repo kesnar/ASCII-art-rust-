@@ -1,10 +1,14 @@
+use std::env;
 extern crate image;
 
 use crate::image::GenericImageView;
 use crate::image::FilterType;
 
 fn main() {
-    let mut img = match image::open("res/4.jpg") {
+
+    let args: Vec<String> = env::args().collect();
+
+    let mut img = match image::open(&args[1]) {
         Ok(a) => a,
         Err(_) => panic!("Incorrect image file"),
     };
