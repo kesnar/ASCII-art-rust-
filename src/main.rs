@@ -10,7 +10,7 @@ fn main() {
 
     let mut img = match image::open(&args[1]) {
         Ok(a) => a,
-        Err(_) => panic!("Incorrect image file"),
+        Err(_) => panic!("Can't find image file at {}", &args[1]),
     };
 
     let (mut width, mut height) = img.dimensions();
