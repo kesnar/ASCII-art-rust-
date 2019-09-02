@@ -1,17 +1,11 @@
 use std::env;
 extern crate image;
 
-use crate::image::GenericImageView;
-use crate::image::FilterType;
-
 fn main() {
 
     let args: Vec<String> = env::args().collect();
 
-    let mut img = match image::open(&args[1]) {
-        Ok(a) => a,
-        Err(_) => panic!("Can't find image file at {}", &args[1]),
-    };
+    let mut img = match image::open(&args[1]).expect("Can't find image file at {}", &args[1])
 
     let (mut width, mut height) = img.dimensions();
 
@@ -35,7 +29,6 @@ fn main() {
                 println!("");
             }
             let p = img.get_pixel(x,y);
-            //print!("{:?}",p );
             
             print!("{}", bright_to_char((p[0] as f32 + p[1] as f32 + p[2] as f32) / 3.0));
         }
