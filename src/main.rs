@@ -1,3 +1,5 @@
+//this is a comment
+
 use std::env;
 extern crate image;
 
